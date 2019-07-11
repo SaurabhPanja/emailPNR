@@ -3,20 +3,10 @@
 const express = require('express'),
       app = express(),
       bodyParser = require('body-parser'),
-      mongoose = require('mongoose');
+      mongoose = require('mongoose'),
+      User = require('./models/Users');
 
 mongoose.connect("mongodb://localhost/smspnr", {useNewUrlParser: true });
-
-var userSchema = mongoose.Schema({
-    email : String,
-    pnr : String,
-    confirmed : {
-        type : Boolean,
-        default : false
-    }
-});
-
-var User = new mongoose.model('User',userSchema);
 
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
